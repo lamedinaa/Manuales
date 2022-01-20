@@ -1,0 +1,38 @@
+git init
+git add . 
+git commit -m "mi primer commit"
+
+
+git config --list                           ##show las configuraciones
+git config --global user.email "<email>"
+git config --global user.name "<name>"
+
+
+…or create a new repository on the command line
+echo "# miportafolio" >> README.md
+git init
+git add README.md
+dgit commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/lamedinaa/miportafolio.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/lamedinaa/miportafolio.git
+git branch -M main
+git push -u origin main
+
+
+//////////////RAMAS  
+git branch   
+git branch <RAMA>                                    #  Para crear una rama                   
+git checkout <RAMA>                                  #  Para acceder       
+git checkout -b iss53                                #  atajo para las dos anteriores         
+git checkout master                                  #  Para acceder MASTER
+git branch -d <RAMA>                                 #Si ya hemos acabado con la rama <RAMA> y queremos eliminarla en el repositorio local, utilizaremos el comando git branch -d
+git branch -D <RAMA>                                 #Para forzar el borrado en caso de algún error
+git push origin :<RAMA>                              #Para eliminar el repositorio remosto git push origin
+//////////////UBUNTU
+sudo apt-get update
+sudo apt-get install git-all 
+git version

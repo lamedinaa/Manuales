@@ -1,0 +1,46 @@
+#####INSTALACION DJANGO
+apt install python3.8-venv        ##en caso de ubuntu es necesario
+python -m venv env
+
+pip install django
+python -m pip freeze
+
+django-admin startproject <nombreProyecto>
+django-admin startapp <nombreApp>
+django-admin createsuperuser
+
+manage.py makemigrations
+manage.py migrate
+manage.py runserver
+
+manage.py shell
+
+////////DESPLIEGE
+python manage.py runserver 0.0.0.0:8000
+sudo apt-get isntall python-dev
+sudo apt-get install build-essential  ##C compiler
+pip install uwsgi
+-> uwsgi --http :8000 --module [nombreproyectoDjango].wsgi 
+sudo apt-get install nginx 
+sudo nano /etc/nginx/sites-available/<nombreproyectoDjango>.conf
+ls -al /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/miportafolio.conf /etc/nginx/sites-enabled/
+ls -al  ## veo los links simbolicos b
+sudo service apache2 stop
+
+/////////// servicio uwsgi
+ sudo systemctl start emperor.uwsgi.service
+///////////pip
+pip install -r requirements.txt         ### con este comando anotamos todas las dependencias que necesita el nombreProyecto
+
+
+
+---requirement.txt
+packcage == version
+packcage >= version
+packcage
+
+### VERSIONAMIENTO
+pip search <packcage>
+pip freeze
+python -m django --version 

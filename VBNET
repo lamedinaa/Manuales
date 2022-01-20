@@ -1,0 +1,31 @@
+////////LINQ
+
+Dim variable As List( Of Igrouping(Of String,DataRow ) )
+variable = tabla.AsEnumerable().GroupBy(Function(row) row.Item("Ciudad").toString ).Tolist()
+
+Dim variable1 As List(Of integer)
+variable 1 = (From grupito As Igrouping(Of String, DataRow) in variable2.AsEnumerable() Select grupito.sum(Funtion(row) CInt(row.Item("id").toString ) ) )
+
+
+Dim variable2 As List(Of String())
+variable2  = (From grupito As Igrouping(Of String, DataRow) In variable.AsEnumerable() 
+    Select {
+        grupito.key,
+        grupito.sum(function(row) CInt( row.Item("id").toString ) .toString ) } 
+    ).Tolist()
+
+
+
+///////////REGEX
+dim texto = "<inserte texto aquí>"
+dim vStrPatron As String = "<patronregex>"
+dim vMatchCollectionResultados = Regex.Matches(texto,vStrPatron,RegexOptions.Multiline)  '''RegexOptions.Multiline para buscar en cada linea
+                                                                                         '''RegexOptions.IgnoreCase para buscar en todo el texto ejemplo: los archivos XML
+
+For Each resultado As Match in vMatchCollectionResultados
+   console.writeline(resultado.Groups("<nombreGrupo>").value )
+Next
+
+
+/////////////
+new System.Net.NetworkCredential(string.Empty, OutlookPassword).Password

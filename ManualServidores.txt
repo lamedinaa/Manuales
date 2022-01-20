@@ -1,0 +1,54 @@
+##Manual de servidores (ubuntu)
+
+ssh -i [Archivo.pem] ubuntu@[ippublica]
+ssh -i HubLab_Virginia.pem ubuntu@xxxxxxxxxx
+
+scp -r -i .\HubLab_Virginia.pem [carpeta_origen] ubuntu@54.234.0.152:<ruta_destino>
+scp -r -i .\HubLab_Virginia.pem C:\Users\ASUS\Laboratorio\Django_Proyectos\Portafolio\static ubuntu@54.234.0.152:ubuntu/django_proyects/miportafolio
+
+////CRIPTOGRAFIA ASIMÉTRICA (Algoritmo RSA)
+1 . se genera en local el par ---> ssh-keygen -t rsa                                    ##Genera la clave publica y privada (key pair)
+2.  Se copia la clave publica en root/ssh/authorized_keys
+3.  nano authorized_keys
+4.  ssh <usuario>@<ippublica> -i <ruta/id_rsa>                                          ##Conexión al servidor usuando la llave privada
+
+///LOGIN CON NUESTRO USUARIO
+
+///OPTIMIZAR LA CONEXIÓN (video 9)
+1. [local] Ir a la carpeta   C:\users\<nombreUsuario>\.ssh 
+2. touch config 
+                                              
+   Host *
+    ServerAliveInterval 120
+
+   Host <nombreUsuario>
+    HostName <ippublica>
+    User <nombreUsuario>
+    Port 22
+    IdentitityFile <rutaLLavePrivada>
+
+3. ssh <HostName>
+
+///DESACTIVAR CONEXIONES POR CONTRASEÑAS
+cd /etc/ssh/
+nano sshd_config
+PasswordAuthentication no
+sudo systemctl reload sshd                                     ## recarga el programa en segundo plano sshd
+
+
+/////////////COMANDOS UBUNTU
+man <comnado>                                                   ## Muestra el manual del comando
+adduser <nombreUsuario>
+pwd                                                             ## en que directorio estoy
+man hier                                                        ## Muestra la jerarquía de las carpetas
+cd /                                                            ## me mueve al directorio raíz
+ll                                                              ## lista los directorios
+su <nombreUsuario>                                              ## me cambia de usuario
+apt update                                                      ## actualiza el sistema !requiere permisos administrativos!
+usermod -aG sudo <nombreUsuario>                                ## Da permisos de administrador
+sudo apt update                                                 ## ejecuta comandos con permisos de administrador
+sudo su apt update                                              ## Ejecuta comando con permiso de usuario raíz.
+cat <nombreArchivo>                                             ## Muestra contenido del archivo
+sudo systemctl reload <programa>                                ## Recarga programa en segundo plano
+rm -r <carpeta>
+cp <archivo1> <archivo2> <ruta_destino>

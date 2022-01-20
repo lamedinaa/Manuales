@@ -1,0 +1,4 @@
+tree /f                         ##show directory in form tree
+del  <filename>  
+rmdir /Q /S <Folder>
+
